@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f781bbb1-a5c1-432c-8035-ccb59ee23cc9" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.go" afterPath="$PROJECT_DIR$/app.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/htmlpart/renderhtml.go" afterPath="$PROJECT_DIR$/htmlpart/renderhtml.go" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,11 +16,10 @@
       <file leaf-file-name="app.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="77" column="18" lean-forward="false" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
+            <state relative-caret-position="228">
+              <caret line="76" column="18" lean-forward="false" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
               <folding>
                 <element signature="e#14#206#0" expanded="true" />
-                <marker date="1527340979942" expanded="true" signature="1395:1412" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -72,6 +69,9 @@
       </file>
     </leaf>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -120,6 +120,9 @@
       </pane>
       <pane id="Scratches" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GO_FMT" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -402,6 +405,14 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="~">
+      <created>1527341098931</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1527341098931</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -440,6 +451,12 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="~" />
+    <option name="LAST_COMMIT_MESSAGE" value="~" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -451,7 +468,6 @@
           <caret line="32" column="61" lean-forward="false" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
           <folding>
             <element signature="e#14#206#0" expanded="true" />
-            <marker date="1527340979942" expanded="true" signature="1395:1412" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -512,7 +528,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#14#206#0" expanded="true" />
-            <marker date="1527340979942" expanded="true" signature="1395:1412" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -523,7 +538,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#14#206#0" expanded="true" />
-            <marker date="1527340979942" expanded="true" signature="1395:1412" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -534,7 +548,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#14#206#0" expanded="true" />
-            <marker date="1527340979942" expanded="true" signature="1395:1412" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -555,7 +568,6 @@
           <caret line="32" column="61" lean-forward="false" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
           <folding>
             <element signature="e#14#206#0" expanded="true" />
-            <marker date="1527340979942" expanded="true" signature="1395:1412" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -582,7 +594,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#14#206#0" expanded="true" />
-            <marker date="1527340979942" expanded="true" signature="1395:1412" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -593,7 +604,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#14#206#0" expanded="true" />
-            <marker date="1527340979942" expanded="true" signature="1395:1412" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -670,11 +680,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="77" column="18" lean-forward="false" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
+        <state relative-caret-position="228">
+          <caret line="76" column="18" lean-forward="false" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
           <folding>
             <element signature="e#14#206#0" expanded="true" />
-            <marker date="1527340979942" expanded="true" signature="1395:1412" ph="{...}" />
           </folding>
         </state>
       </provider>
