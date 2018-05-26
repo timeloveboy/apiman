@@ -1,52 +1,51 @@
 package main
 
 import (
-	"log"
+	"github.com/gobestsdk/gobase/log"
+	"github.com/timeloveboy/apiman/htmlpart"
+	"io/ioutil"
 	"net/http"
 	"os"
-	"github.com/gobestsdk/gobase/log"
 )
 
 var (
-	root = ""
-	data = "/"
-	port = "8001"
-	notexist="not exist"
+	root     = ""
+	port     = "8009"
+	notexist = "not exist"
 )
 
-func staticDirHandler(mux *http.ServeMux, prefix string, staticDir string, flags int) {
+func staticDirHandler(mux *http.ServeMux, prefix string) {
 	mux.HandleFunc(prefix,
 		func(w http.ResponseWriter, r *http.Request) {
-			log.Info(log.Fields{"path":r.URL.Path})
+			log.Info(log.Fields{"path": r.URL.Path})
 			root, _ = os.Getwd()
 			f := root + r.URL.Path
 			fi, err := os.Lstat(f)
 			if err != nil {
-				log.Fatal(log.Fields{"err":err,})
+				log.Fatal(log.Fields{"err": err})
 				w.Write([]byte(notexist))
+				return
 			}
 
 			switch mode := fi.Mode(); {
-				case mode.IsRegular():
-					htmlpart(w, r)
-				default  :
-					log.Info(log.Fields{"err":err})
-					w.Write([]byte("notexist"))
+			case mode.IsRegular():
+				bs, _ := ioutil.ReadFile(f)
+				result := htmlpart.Render(r.URL.Path, string(bs))
+				w.Write([]byte(result))
+			default:
+				log.Info(log.Fields{"err": err})
+				w.Write([]byte("notexist"))
 			}
 		})
 }
 
-func htmlpart(w http.ResponseWriter, r *http.Request){
-	
-
-}
 func main() {
 	log.Setlogfile("opengw.log")
-	
+
 	var mux = http.NewServeMux()
-	staticDirHandler(mux, "/", root+data, 0)
-	log.Info(log.Fields{"http.ListenAndServe":port})
- 
+	staticDirHandler(mux, "/")
+	log.Info(log.Fields{"http.ListenAndServe": port})
+
 	err := http.ListenAndServe(":"+port, mux)
 
 	if err != nil {
