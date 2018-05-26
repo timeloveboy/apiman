@@ -3,7 +3,6 @@ package htmlpart
 import (
 	"fmt"
 	"io/ioutil"
-	"os"
 	"regexp"
 	"strings"
 )
@@ -12,7 +11,7 @@ const (
 	Regex_Loadtemplate = `<!--{{LoadTemplate(.{0,20})}}-->`
 )
 
-func Render(url, html string) string {
+func Render(root, url, html string) string {
 	reg := regexp.MustCompile(Regex_Loadtemplate)
 	var mc []string
 	mc = reg.FindAllString(html, -1)
@@ -24,17 +23,17 @@ func Render(url, html string) string {
 		nodepath := ""
 
 		if pagename[0] == '/' {
-			root, _ := os.Getwd()
+
 			nodepath = root + "/"
 			nodeurl := nodepath + pagename
 			value, err := ioutil.ReadFile(nodeurl)
 			if err != nil {
 				continue
 			}
-			v := Render(nodepath+pagename, string(value))
+			v := Render(root, nodepath+pagename, string(value))
 			result = strings.Replace(result, tag, v, -1)
 		} else {
-			root, _ := os.Getwd()
+
 			inx := strings.LastIndex(url, "/")
 			nodepath = root + url[:inx] + "/"
 			fmt.Println(nodepath)
@@ -43,7 +42,7 @@ func Render(url, html string) string {
 			if err != nil {
 				continue
 			}
-			v := Render(nodepath+pagename, string(value))
+			v := Render(root, nodepath+pagename, string(value))
 			result = strings.Replace(result, tag, v, -1)
 		}
 	}
