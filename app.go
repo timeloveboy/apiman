@@ -1,13 +1,17 @@
 package main
 
 import (
+	"strings"
+
 	"flag"
+ 
 	"github.com/gobestsdk/gobase/httpserver"
 	"github.com/gobestsdk/gobase/log"
 	"github.com/timeloveboy/apiman/htmlpart"
 	"io/ioutil"
 	"net/http"
 	"os"
+	"runtime"
 	"os/signal"
 	"syscall"
 )
@@ -52,12 +56,16 @@ func main() {
 	if root == "" {
 		root, _ = os.Getwd()
 	}
+	
+ 
 
-	server.Mux.HandleFunc("/",
-		func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/",func(w http.ResponseWriter, r *http.Request) {
 			log.Info(log.Fields{"path": r.URL.Path})
-
 			f := root + r.URL.Path
+			if runtime.GOOS =="windows" {
+				f=strings.Replace(f,"\\","/",-1)
+			}
+			
 			fi, err := os.Lstat(f)
 			if err != nil {
 				log.Fatal(log.Fields{"err": err})

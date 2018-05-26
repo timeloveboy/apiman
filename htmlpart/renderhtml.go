@@ -1,7 +1,7 @@
 package htmlpart
 
 import (
-	"fmt"
+
 	"io/ioutil"
 	"regexp"
 	"strings"
@@ -36,7 +36,6 @@ func Render(root, url, html string) string {
 
 			inx := strings.LastIndex(url, "/")
 			nodepath = root + url[:inx] + "/"
-			fmt.Println(nodepath)
 			nodeurl := nodepath + pagename
 			value, err := ioutil.ReadFile(nodeurl)
 			if err != nil {
