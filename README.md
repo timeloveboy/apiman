@@ -23,3 +23,8 @@ apiman是一个静态网站服务器，但是提供了html复合封装，可用�
 ...
  ```
 
+## Docker run
+
+```
+ sudo docker run -p 8080:8080  -v /CODE/github.com/timeloveboy/moejk-console:/web timeloveboy/apiman
+```
