@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	Regex_Loadtemplate = `<!--{{LoadTemplate(.{0,200})}}-->`
+	Regex_Loadtemplate = `<!--{{LoadTemplate(.{0,999})}}-->`
 )
 
 func Render(root, url, html string) string {
