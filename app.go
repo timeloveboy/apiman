@@ -4,15 +4,15 @@ import (
 	"strings"
 
 	"flag"
- 
+
 	"github.com/gobestsdk/gobase/httpserver"
 	"github.com/gobestsdk/gobase/log"
 	"github.com/timeloveboy/apiman/htmlpart"
 	"io/ioutil"
 	"net/http"
 	"os"
-	"runtime"
 	"os/signal"
+	"runtime"
 	"syscall"
 )
 
@@ -56,33 +56,31 @@ func main() {
 	if root == "" {
 		root, _ = os.Getwd()
 	}
-	
- 
 
-	http.HandleFunc("/",func(w http.ResponseWriter, r *http.Request) {
-			log.Info(log.Fields{"path": r.URL.Path})
-			f := root + r.URL.Path
-			if runtime.GOOS =="windows" {
-				f=strings.Replace(f,"\\","/",-1)
-			}
-			
-			fi, err := os.Lstat(f)
-			if err != nil {
-				log.Fatal(log.Fields{"err": err})
-				w.Write([]byte(notexist))
-				return
-			}
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		log.Info(log.Fields{"path": r.URL.Path})
+		f := root + r.URL.Path
+		if runtime.GOOS == "windows" {
+			f = strings.Replace(f, "\\", "/", -1)
+		}
 
-			switch mode := fi.Mode(); {
-			case mode.IsRegular():
-				bs, _ := ioutil.ReadFile(f)
-				result := htmlpart.Render(root, r.URL.Path, string(bs))
-				w.Write([]byte(result))
-			default:
-				log.Info(log.Fields{"err": err})
-				w.Write([]byte("notexist"))
-			}
-		})
+		fi, err := os.Lstat(f)
+		if err != nil {
+			log.Fatal(log.Fields{"err": err})
+			w.Write([]byte(notexist))
+			return
+		}
+
+		switch mode := fi.Mode(); {
+		case mode.IsRegular():
+			bs, _ := ioutil.ReadFile(f)
+			result := htmlpart.Render(root, r.URL.Path, string(bs))
+			w.Write([]byte(result))
+		default:
+			log.Info(log.Fields{"err": err})
+			w.Write([]byte("notexist"))
+		}
+	})
 	server.SetPort(port)
 	server.Run()
 
