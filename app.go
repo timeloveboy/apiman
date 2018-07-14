@@ -9,6 +9,7 @@ import (
 	"github.com/gobestsdk/gobase/log"
 	"github.com/timeloveboy/apiman/htmlpart"
 	"io/ioutil"
+	"mime"
 	"net/http"
 	"os"
 	"os/signal"
@@ -28,7 +29,12 @@ func init() {
 	flag.StringVar(&root, "root", "", "--root=/myweb")
 	flag.IntVar(&port, "port", 80, "--port=8080")
 }
-
+func setmime(filename string, w http.ResponseWriter) {
+	if i := strings.LastIndex(filename, "."); i > 0 {
+		suffix := filename[i:]
+		w.Header().Set("Content-Type", mime.TypeByExtension(suffix))
+	}
+}
 func main() {
 	log.Setlogfile("apiman.log")
 
@@ -66,8 +72,9 @@ func main() {
 
 		fi, err := os.Lstat(f)
 		if err != nil {
-			log.Fatal(log.Fields{"err": err})
-			w.Write([]byte(notexist))
+			log.Warn(log.Fields{"not exist err": err})
+			w.WriteHeader(404)
+			w.Write([]byte(""))
 			return
 		}
 
@@ -75,6 +82,8 @@ func main() {
 		case mode.IsRegular():
 			bs, _ := ioutil.ReadFile(f)
 			result := htmlpart.Render(root, r.URL.Path, string(bs))
+
+			setmime(fi.Name(), w)
 			w.Write([]byte(result))
 		default:
 			log.Info(log.Fields{"err": err})
